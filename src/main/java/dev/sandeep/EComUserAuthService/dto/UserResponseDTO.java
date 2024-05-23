@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -15,6 +16,7 @@ public class UserResponseDTO {
     private String email;
     private List<RoleResponseDTO> roles;
     private String token;
+    private UUID userId;
 
     public static UserResponseDTO from(User user){
         if(user == null){
@@ -24,12 +26,14 @@ public class UserResponseDTO {
         userResponseDTO.name = user.getName();
         userResponseDTO.email = user.getEmailId();
         userResponseDTO.token = user.getToken();
+        userResponseDTO.userId = user.getId();
         userResponseDTO.roles = new ArrayList<>();
 
         for (Role role : user.getRoles()){
             RoleResponseDTO roleResponseDTO = new RoleResponseDTO();
             roleResponseDTO.setDescription(role.getDescription());
             roleResponseDTO.setRole(role.getRoleName());
+            roleResponseDTO.setRoleId(role.getId());
             userResponseDTO.roles.add(roleResponseDTO);
         }
         return  userResponseDTO;
