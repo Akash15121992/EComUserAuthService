@@ -13,7 +13,8 @@ import java.util.List;
 public class User  extends  BaseModel{
     private String name;
     private String emailId;
-    private String password; // wont store actual password
+    private String password; // won't store actual password
+    private String token; //temporary solution
     @ManyToMany
     private List<Role> roles;
 }

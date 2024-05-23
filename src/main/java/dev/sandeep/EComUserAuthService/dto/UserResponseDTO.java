@@ -14,6 +14,7 @@ public class UserResponseDTO {
     private String name;
     private String email;
     private List<RoleResponseDTO> roles;
+    private String token;
 
     public static UserResponseDTO from(User user){
         if(user == null){
@@ -22,6 +23,7 @@ public class UserResponseDTO {
         UserResponseDTO userResponseDTO = new UserResponseDTO();
         userResponseDTO.name = user.getName();
         userResponseDTO.email = user.getEmailId();
+        userResponseDTO.token = user.getToken();
         userResponseDTO.roles = new ArrayList<>();
 
         for (Role role : user.getRoles()){
@@ -35,6 +37,10 @@ public class UserResponseDTO {
 
     //get User entity from userResponseDTO
     public static User from(UserResponseDTO userResponseDTO){
+
+        User user = new User();
+        user.setName(userResponseDTO.getName());
+        //user.set
         return null;
     }
 }
